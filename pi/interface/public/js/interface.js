@@ -1,7 +1,8 @@
 // Funcção para controlar o lamp
+/*
 $(document).ready(function() {
-
-    // Recarrega dados dos sensores
+    
+    // Refresh sensor data
     refreshSensors();
     setInterval(refreshSensors, 5000);
 
@@ -10,7 +11,6 @@ $(document).ready(function() {
 function refreshSensors() {
 
     $.get('/sensor_module/temperature', function(json_data) {
-        
     $("#temperature").text('Temperature: ' + json_data.temperature + ' C');
 
     $.get('/sensor_module/humidity', function(json_data) {
@@ -19,3 +19,4 @@ function refreshSensors() {
     });
 
 }
+*/
