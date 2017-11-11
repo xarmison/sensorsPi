@@ -3,12 +3,22 @@ const express = require('express');
 
 const app = express();
 
+
+const cons = require('consolidate');
+
+// view engine setup
+app.engine('html', cons.swig)
+app.set('views', 'views/');
+app.set('view engine', 'html');
+
+/*
 //Engine de Vizualização (View Engine)
-app.set('views', './views');
+app.set('views', 'views/');
 app.set('view engine', 'pug');
+*/
 
 //Seta a pasta public
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 // node-aREST
 const rest = require("arest")(app);
@@ -17,7 +27,7 @@ const rest = require("arest")(app);
 
 // Rotas da Interface 
 app.get('/', function(req, res){
-    res.render('interface');
+    res.render('index');
 });
 
 // Servidor 
