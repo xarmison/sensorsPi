@@ -67,6 +67,7 @@ void loop() {
   humidity = dht.readHumidity();
   
   // lida com as chamadas REST
+  // Verifica se o cliente esta conectado e envia os dados
   WiFiClient client = server.available();
   if (!client) {
     return;
