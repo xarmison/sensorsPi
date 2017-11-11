@@ -8,5 +8,5 @@
 
 ##Pré-requisitos
 *Nodejs
-*Pug (antigo Jade), para a rápida escrita de HTML
-*Nodemon, para atualizar o codido do lado do servidor 
+*Modulos: Express, aRest
+
