@@ -6,13 +6,13 @@ const app = express();
 
 const cons = require('consolidate');
 
-// view engine setup
+// Engine de vizualização(View Engine) HTML
 app.engine('html', cons.swig)
 app.set('views', 'views/');
 app.set('view engine', 'html');
 
 /*
-//Engine de Vizualização (View Engine)
+//Engine de Vizualização(View Engine) PUG
 app.set('views', 'views/');
 app.set('view engine', 'pug');
 */
