@@ -38,7 +38,7 @@ void setup(void){
   rest.variable("temperature",&temperature);
   rest.variable("humidity",&humidity);
     
-  // Da um nome e um id ao sensor 
+  // Da um nome e um id ao ESP 
   rest.set_id("1");
   rest.set_name("sensor_module");
   
@@ -49,7 +49,7 @@ void setup(void){
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("Deu bom! WiFi conectado");
+  Serial.println("Deu bom, WiFi conectado");
  
   // Inicia o servidor
   server.begin();
