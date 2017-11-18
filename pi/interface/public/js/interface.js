@@ -10,10 +10,10 @@ $(document).ready(function() {
 function refreshSensors() {
 
     $.get('/sensor_module/temperature', function(json_data) {
-    $("#temperatura").text('Temperature: ' + json_data.temperature + ' C');
+    $("#temperatura").text(json_data.temperature + ' *C');
 
     $.get('/sensor_module/humidity', function(json_data) {
-        $("#umidade").text('Humidity: ' + json_data.humidity + ' %');
+        $("#umidade_ar").text(json_data.humidity + ' %');
     });
     });
 
