@@ -3,7 +3,6 @@ const express = require('express');
 
 const app = express();
 
-
 const cons = require('consolidate');
 
 // Engine de vizualização(View Engine) HTML
@@ -23,7 +22,7 @@ app.use('/static', express.static(__dirname + '/public'));
 // node-aREST
 const rest = require("arest")(app);
 // Adiciona o esp 
-//rest.addDevice('http','192.168.2.12');
+rest.addDevice('http','192.168.2.11');
 
 // Rotas da Interface 
 app.get('/', function(req, res){
