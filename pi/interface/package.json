@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "sudo node app.js"
+    "start": "sudo node bach.js"
   },
   "author": "Richardson Santiago",
   "license": "ISC",
