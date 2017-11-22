@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,128 +22,215 @@
 
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/interface.js"></script>
-    
+    <script src="/static/js/graficos.js"></script>
+
 </head>
+
 <body>
     <!--Nav bar -->
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">
-            <img src="/static/images/pie_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            SensorsPI
+            <img src="/static/images/pie_icon.png" width="30" height="30" class="d-inline-block align-top" alt=""> SensorsPI
         </a>
     </nav>
-    
-    
+
+
     <!-- Coisas ligadas no ESP -->
     <div class="container-fluid">
+        <!-- Primeira linha -->
         <div class="row">
+
             <div class="col-sm-4">
-                <div class="card card-sensor">
+                <div class=" card card-sensor">
                     <div class="card-header">
-                        Temperatura
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active">Sensor Ultrassônico</a>
+                        </ul>
                     </div>
-                    <div id="temperatura" class="card-body">
-                        <!-- Informações do sensor -->
-                        
+
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <div id="distance" class="card-body">
+                                <!-- Informações do sensor -->
+                            </div>
+                        </div>
                     </div>
-                </div>            
+                </div>
             </div>
+
             <div class="col-sm-4">
-                <div class="card card-sensor">
+                <div class=" card card-sensor">
                     <div class="card-header">
-                        Umidade do ar
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active">Última entrada no RFID</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div id="umidade_ar" class="card-body">
-                        <!-- Informações do sensor -->
+
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <div id="rfid_log" class="card-body">
+                                <!-- Informações do sensor -->
+                            </div>
+                        </div>
                     </div>
-                </div>            
+                </div>
             </div>
+
             <div class="col-sm-4">
-                <div class="card card-sensor">
+                <div class=" card card-sensor">
                     <div class="card-header">
-                        Umidade do solo
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#11" data-toggle="tab">Data</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#12" data-toggle="tab">Gráfico</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div id="umidade_solo" class="card-body">
-                        <!-- Informações do sensor -->
-                    </div>
-                </div>            
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card card-sensor">
-                    <div class="card-header">
-                        Corrente
-                    </div>
-                    <div id="corrente" class="card-body">
-                        <!-- Informações do sensor -->
-                    </div>
-                </div>            
-            </div>
-            <div class="col-sm-4">
-                <div class="card card-sensor">
-                    <div class="card-header">
-                        Ultima entrada no RFID
-                    </div>
-                    <div id="rfid" class="card-body">
-                        <!-- Informações do sensor -->
-                    </div>
-                </div>            
-            </div>
-            <div class="col-sm-4">
-                <div class="card card-sensor">
-                    <div class="card-header">
-                        ?
-                    </div>
-                    <div class="card-body">
-                        <!-- Informações do sensor -->
-                        <canvas id="myChart" width="400" height="400"></canvas>
-                        <script>
-                        var ctx = document.getElementById("myChart").getContext('2d');
-                        var myChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                                datasets: [{
-                                    label: '# of Votes',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132, 0.2)',
-                                        'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 206, 86, 0.2)',
-                                        'rgba(75, 192, 192, 0.2)',
-                                        'rgba(153, 102, 255, 0.2)',
-                                        'rgba(255, 159, 64, 0.2)'
-                                    ],
-                                    borderColor: [
-                                        'rgba(255,99,132,1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    yAxes: [{
-                                        ticks: {
-                                            beginAtZero:true
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="11">
+                            <h3>Amanheceu é hora de dormir</h3>
+                        </div>
+                        <div class="tab-pane" id="12">
+                            <div class="card-body">
+                                <canvas id="myChart" width="400" height="400"></canvas>
+                                <script>
+                                    const ctx = document.getElementById("myChart").getContext('2d');
+
+                                    //Type, Data and options 
+                                    let chartGraph = new Chart(ctx, {
+                                        type: 'line',
+                                        data: {
+                                            labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago",
+                                                "Set", "Out", "Nov", "Dez"
+                                            ],
+                                            datasets: [{
+                                                    label: "TAXA DE CLIQUES - 2017",
+                                                    data: [5, 10, 1, 14, 20, 30, 6, 12, 5, 20, 78, 54],
+                                                    borderWidth: 3,
+                                                    borderColor: 'rgba(77,166,253,0.85)',
+                                                    backgroundColor: 'transparent'
+                                                },
+                                                {
+                                                    label: "TAXA DE CLIQUES - 2018",
+                                                    data: [2, 7, 10, 20, 15, 28, 8, 6, 10, 14, 27, 69],
+                                                    borderWidth: 3,
+                                                    borderColor: 'rgba(231, 165, 99,0.85)',
+                                                    backgroundColor: 'transparent'
+                                                }
+                                            ]
+                                        },
+                                        options: {
+                                            title: {
+                                                display: true,
+                                                fontSize: 20,
+                                                text: "TESTE DO CHARTS.JS"
+                                            },
+                                            labels: {
+                                                fontStyle: "bold"
+                                            }
                                         }
-                                    }]
-                                }
-                            }
-                        });
-                        </script>
+                                    });
+                                </script>
+                            </div>
+                        </div>
                     </div>
-                </div>            
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Segunda linha -->
+        <div class="row">
+
+            <div class="col-sm-4">
+                <div class=" card card-sensor">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#1" data-toggle="tab">Temperatura</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#2" data-toggle="tab">Gráfico</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="1">
+                            <div id="temperatura" class="card-body">
+                                <!-- Informações do sensor -->
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="2">
+                            <canvas id="tempGraph"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class=" card card-sensor">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#3" data-toggle="tab">Umidade do ar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#4" data-toggle="tab">Gráfico</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="3">
+                            <div id="umidade_ar" class="card-body">
+                                <!-- Informações do sensor -->
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="4">
+                            <canvas id="umiGraph"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class=" card card-sensor">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#5" data-toggle="tab">LDR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#6" data-toggle="tab">Gráfico</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="5">
+                            <div id="ldr" class="card-body">
+                                <!-- Informações do sensor -->
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="6">
+                            <canvas id="ldrGraph"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
-
-
-    
 </body>
+
 </html>
