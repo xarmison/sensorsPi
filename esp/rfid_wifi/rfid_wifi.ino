@@ -27,7 +27,7 @@ String uid, acess;
 
 void setup(){
    
-    Serial.begin(9600);  //Inicia a comunicação serial
+    Serial.begin(115200);  //Inicia a comunicação serial
     SPI.begin();        //Inicia o SPI
     mfrc522.PCD_Init();//Inicia o MFRC522 
 
@@ -84,28 +84,30 @@ void loop(){
     uid = content;
     Serial.println();
     if (content.substring(1) == "21 29 B0 A9" || content.substring(1) == "74 C6 45 7D"){//change UID of the card that you want to give access
-        acess = "Access Granted";
+        acess = "Acesso Permitido";
         Serial.println(acess);
         Serial.println("Welcome Mr.Robot ");
         Serial.println("Have FUN ");
-        delay(1000);
+        //delay(1000);
     }
     
     else{
-        acess = "Access Denied";
+        acess = "Acesso Negado";
         Serial.println(acess);
-        delay(1000);
+        //delay(1000);
     }
 
     // lida com as chamadas REST
     // Verifica se o cliente esta conectado e envia os dados
     WiFiClient client = server.available();
+    /*
     if (!client) {
         return;
     }
     while(!client.available()){
         delay(1);
     }
+    */
     rest.handle(client);
     Serial.println("Dados enviados!");
     digitalWrite(LED_BUILTIN, HIGH);

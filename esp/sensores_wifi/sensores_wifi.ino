@@ -91,12 +91,14 @@ void loop() {
   // lida com as chamadas REST
   // Verifica se o cliente esta conectado e envia os dados
   WiFiClient client = server.available();
+  /*
   if (!client) {
     return;
   }
   while(!client.available()){
     delay(1);
   }
+  */
   rest.handle(client);
   Serial.println("Dados enviados!");
   digitalWrite(LED_BUILTIN, HIGH);
