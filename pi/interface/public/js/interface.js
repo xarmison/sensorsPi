@@ -33,31 +33,29 @@ function removeAllData(){
     removeData(ldrGraph);
 }
 
-
-
 function refreshSensors() {
     //mudar o ip do esp conectado aos sensores
-    $.get('http://192.168.2.6/sensors/temperature', (json_data) => {
+    $.get('http://192.168.43.225/sensors/temperature', (json_data) => {
         $("#temperatura").html(json_data.temperature + ' °C');
         addData(tempGraph, json_data.temperature);
     });
             
-    $.get('http://192.168.2.6/sensors/humidity', function (json_data) {
+    $.get('http://192.168.43.225/sensors/humidity', function (json_data) {
         $("#umidade_ar").html(json_data.humidity + ' %');
         addData(umiGraph, json_data.humidity);
     });
 
-    $.get('http://192.168.2.6/sensors/ldr', function (json_data) {
+    $.get('http://192.168.43.225/sensors/ldr', function (json_data) {
         $("#ldr").html(json_data.ldr);
         addData(ldrGraph, json_data.ldr);
     });
 
-    $.get('http://192.168.2.6/sensors/distance', function (json_data) {
+    $.get('http://192.168.43.225/sensors/distance', function (json_data) {
         $("#distance").html(json_data.distance + ' cm');
     });
     
     //mudar o ip do esp conectado ao rfid
-    $.get('http://192.168.2.6/rfid', (json_data) => {
+    $.get('http://192.168.43.178/rifd', (json_data) => {
         $("#rfid_log").html("ID do cartão: " + json_data.variables.uid + "</br>" + json_data.variables.acess);
     });
 
