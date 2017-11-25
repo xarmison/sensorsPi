@@ -14,8 +14,8 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 aREST rest = aREST();
 
 // Parametros do WiFi 
-const char* ssid = "WIFIDOBOM";
-const char* password = "ronaldopele";
+const char* ssid = "";
+const char* password = "";
 
 //A porta a escutar para conecoes TCP
 #define LISTEN_PORT  80
