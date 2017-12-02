@@ -1,4 +1,4 @@
 # sensorsPi
-Projeto de linguagem de programação 
+- Projeto de linguagem de programação 
 
 
