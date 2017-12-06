@@ -1,4 +1,22 @@
 # sensorsPi
-Projeto de linguagem de programação 
+
+## Pré-requisitos 
+* Clone o repositorio
+* ESP8266 com os sensores desejados conectados
+* Instalação do NodeJS:
+\t Vá até o diretorio pi e dê permição de escrita ao script de instalação e o execute:
+```sh
+chmod +x installNode.sh
+./installNode.sh
+```
+# Utilização
+
+* Tenha certeza de que o ESP está devidamente conectado a rede e seu IP foi adicionado no servidor
+```sh
+cd pi/interface
+npm install
+npm start
+```
+
 
 
