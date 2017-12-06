@@ -11,7 +11,7 @@ chmod +x installNode.sh
 ```
 # Utilização
 
-* Tenha certeza de que o ESP está devidamente conectado a rede e seu IP foi adicionado no servidor:
+* Tenha certeza de que o ESP está devidamente conectado a rede e seu IP foi adicionado no servidor
 ```sh
 cd pi/interface
 npm install
