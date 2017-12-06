@@ -1,8 +1,8 @@
 # sensorsPi
 
 ## Pré-requisitos 
-* Clone o repositorio
-* ESP8266 com os sensores desejados conectados
+* Clone o repositorio.
+* ESP8266 com os sensores desejados conectados.
 * Instalação do NodeJS:
  Vá até o diretorio pi e dê permição de escrita ao script de instalação e o execute:
 ```sh
